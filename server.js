@@ -11,7 +11,7 @@ var app             = express();
 // Express Configuration
 // -----------------------------------------------------
 // Sets the connection to MongoDB
-mongoose.connect("mongodb://localhost/MeanMapApp");
+mongoose.connect("mongodb://localhost:27017/mean-crm-api-db");
 
 // Logging and Parsing
 app.use(express.static(__dirname + '/public'));                 // sets the static files location to public
@@ -25,9 +25,9 @@ app.use(methodOverride());
 
 // Routes
 // ------------------------------------------------------
-// require('./app/routes.js')(app);
+require('./app/routes.js')(app);
 
 // Listen
 // -------------------------------------------------------
 app.listen(port);
-console.log('App listening on port ' + port);
+console.log( 'App listening on port ' + port );
