@@ -4,12 +4,12 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
-    "body-parser": "^1.14.1",
-    "express": "^4.13.3",
-    "jsonwebtoken": "^5.4.0",
-    "method-override": "^2.3.5",
-    "mongoose": "^4.1.11",
-    "morgan": "^1.6.1"
+        "express"    : "~4.7.2",
+        "mongoose"   : "~4.1.0",
+        "morgan"     : "~1.2.2",
+        "body-parser": "~1.5.2",
+        "jsonwebtoken": "^5.0.2",
+        "method-override": "~2.1.2"
   },
   "devDependencies": {},
   "scripts": {
