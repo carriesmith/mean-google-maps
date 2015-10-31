@@ -2,7 +2,7 @@
 // This will be the primary means of interaction with Google Maps
 
 angular.module('gservice', [])
-  .factory('gservice', function($http){
+  .factory('gservice', function($rootScope, $http){
 
     // Initialize Variables
     // ---------------------------------------------------
@@ -168,7 +168,14 @@ angular.module('gservice', [])
         lastMarker = marker;
         map.panTo(marker.position);
 
-      });
+        // Update broadcasted variable 
+        // (lets the panel know to change their lat, long values)
+        googleMapService.clickLat = marker.getPosition().lat();
+        googleMapService.clickLong = marker.getPosition().lng();
+
+        $rootScope.$broadcast('clicked');
+
+      }); // end google.maps.event.addListener(map, 'click', function(e){...
 
     }; // end var initialize = function(...)
 

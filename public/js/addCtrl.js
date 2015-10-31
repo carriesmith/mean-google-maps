@@ -1,5 +1,6 @@
 var addCtrl = angular.module('addCtrl', ['geolocation', 'gservice']);
-addCtrl.controller('addCtrl', function($scope, $http, geolocation, gservice){
+
+addCtrl.controller('addCtrl', function($scope, $http, $rootScope, geolocation, gservice){
 
     // Initializes Variables
     // ----------------------------------------------------------------------------
@@ -14,6 +15,20 @@ addCtrl.controller('addCtrl', function($scope, $http, geolocation, gservice){
 
     // Functions
     // ----------------------------------------------------------------------------
+    
+    // get coordinates based on map mouse click.
+    // when a click event is detected ... 
+    $rootScope.$on('clicked', function(){
+
+        // Run the qservice functions associated with identifying coordinates
+        $scope.$apply(function(){
+            $scope.formData.latitude = parseFloat(gservice.clickLat).toFixed(3);
+            $scope.formData.longitude = parseFloat(gservice.clickLong).toFixed(3);
+            $scope.formData.htmlverified = "nope (thanks for spamming my map)";
+        });
+
+    }); // end $rootScope.on('clicked', function(){...
+
     // Creates a new user based on the form fields
     $scope.createUser = function() {
 
